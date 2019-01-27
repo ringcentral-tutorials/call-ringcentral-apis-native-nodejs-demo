@@ -76,7 +76,7 @@
 
       1) Call the `https.request` and passing along the `options` object we created in the previous step.
 
-      2) Read the response and check the `status_code`. If the `status_code` is 200, load it into a JSON object `jsonObj`.
+      2) Read the response and check the `statusCode`. If the `statusCode` is 200, load it into a JSON object `jsonObj`.
 
       3) Define a `tokensObj` variable and assign the `jsonObj` to the "tokens" key/value pair. We also create the current timestamp and assign it to the "timestamp" key/value pair.
 
@@ -120,7 +120,7 @@
 
       6) Call the `https.get` function to send the request to RingCentral platform.
 
-      7) Read the response and check the `status_code`. If the `status_code` is 200, return the response.
+      7) Read the response and check the `statusCode`. If the `status_code` is 200, return the response.
 
   .step(data-title='POST request implementation', data-file='../ringcentral.js' data-highlight='112-149')
     :markdown
@@ -139,7 +139,7 @@
 
       6) Call the `https.request` function to send the request to RingCentral platform.
 
-      7) Read the response and check the `status_code`. If the `status_code` is 200, return the response.
+      7) Read the response and check the `statusCode`. If the `status_code` is 200, return the response.
 
   .step(data-title='Call RingCentral platform APIs', data-file='../demo.js')
     :markdown
