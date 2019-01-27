@@ -103,7 +103,7 @@
       If the `tokens_file` does not exist, we proceed the authentication as discussed in the previous step.
 
 
-  .step(data-title='GET request implementation', data-file='../ringcentral.js' data-highlight='80-109')
+  .step(data-title='GET request implementation', data-file='../ringcentral.js' data-highlight='80-111')
     :markdown
       ### GET request implementation
       Now we implement the `get()` function to handle HTTP GET requests:
@@ -122,7 +122,7 @@
 
       7) Read the response and check the `status_code`. If the `status_code` is 200, return the response.
 
-  .step(data-title='POST request implementation', data-file='../ringcentral.js' data-highlight='110-143')
+  .step(data-title='POST request implementation', data-file='../ringcentral.js' data-highlight='112-149')
     :markdown
       ### POST request implementation
       Now we implement the `post()` function to handle HTTP POST requests
@@ -135,7 +135,11 @@
 
       4) Define the `headers` variable with the "Content-Type", "Accept" and "Authorization" key/value pairs  with the "Authorization" scheme is "Bearer" followed by the access token.
 
-      5) Call the `https.request` function to send the request to RingCentral platform.
+      5) Define the `options` object and specify values for the `host`, `path`, `method` and the `headers`.
+
+      6) Call the `https.request` function to send the request to RingCentral platform.
+
+      7) Read the response and check the `status_code`. If the `status_code` is 200, return the response.
 
   .step(data-title='Call RingCentral platform APIs', data-file='../demo.js')
     :markdown

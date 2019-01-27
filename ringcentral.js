@@ -81,12 +81,14 @@ RingCentral.prototype = {
         this.authenticate(function(err, access_token){
             if (!err) {
               var url = process.env.RC_SERVER_URL
+
+              if (params != null)
+                  endpoint += "?" + querystring.stringify(params)
+
               var headers = {
                   'Accept': 'application/json',
                   'Authorization': 'Bearer ' + access_token
                   }
-              if (params != null)
-                  endpoint += "?" + querystring.stringify(params)
 
               var options = {host: url, path: endpoint, method: 'GET', headers: headers};
 
@@ -111,15 +113,18 @@ RingCentral.prototype = {
         this.authenticate(function(err, access_token){
             if (!err) {
                 var url = process.env.RC_SERVER_URL
+
+                var body = ""
+                if (params != null){
+                    body = JSON.stringify(params)
+                }
+
                 var headers = {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',
                     'Authorization': 'Bearer ' + access_token
                     }
-                var body = ""
-                if (params != null){
-                    body = JSON.stringify(params)
-                }
+
                 var options = {host: url, path: endpoint, method: 'POST', headers: headers};
 
                 var post_req = https.request(options, function(res) {
@@ -135,7 +140,8 @@ RingCentral.prototype = {
                   }).on('error', function (e) {
                       return (callback == null) ? e : callback(e, null)
                   })
-                  post_req.write(body);
+                  if (body != "")
+                      post_req.write(body);
                   post_req.end();
             }else
                 return (callback == null) ? err : callback(err, null)
