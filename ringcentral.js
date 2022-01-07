@@ -27,7 +27,8 @@ RingCentral.prototype = {
         var body = querystring.stringify({
               'grant_type' : 'password',
               'username' : encodeURIComponent(process.env.RC_USERNAME),
-              'password' : process.env.RC_PASSWORD
+              'password' : process.env.RC_PASSWORD,
+              'extension' : process.env.RC_EXTENSION
             });
         var options = {host: url, path: endpoint, method: 'POST', headers: headers};
 
